@@ -1,19 +1,34 @@
 #fizz buzz the game
 
-def get_input(text):
-    return input(text)
 
-def the_setup():
+def fizz_setup():
     try:
-        fizz_input = int(get_input("What number do you want to use for Fizz? "))
-        buzz_input = int(get_input("What number do you want to use for Buzz? "))
-        num_range = int(get_input("How high do you want to count? "))
-        return fizz_input, buzz_input, num_range
+        fizz_input = int(input("What number do you want to use for Fizz? "))
+        return fizz_input
 
     except ValueError:
-        print("No good, please try again.")
-        the_setup()
+        print("That is not a number, please try again.")
+        fizz_setup()
 
+
+def buzz_setup():
+    try:
+        buzz_input = int(input("What number do you want to use for Buzz? "))
+        return buzz_input
+
+    except ValueError:
+        print("That is not a number, please try again.")
+        buzz_setup()
+
+
+def range_setup():
+    try:
+        num_range = int(input("How high do you want to count? "))
+        return num_range
+
+    except ValueError:
+        print("That is not a number, please try again.")
+        range_setup()
 
 
 def the_game(fizz_input, buzz_input, num_range):

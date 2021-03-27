@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 from unittest import TestCase
 from Main import fizzbuzz
 
@@ -8,10 +9,13 @@ class TestGame(TestCase):
         result = fizzbuzz.the_game(finput, binput, ninput )
         self.assertEqual(result, "fizz\nfizz buzz\nfizz\n")
 
-    def test_setup(self):
-        fizz_result = type(fizzbuzz.the_setup("fizz"))
-        self.assertEqual(fizz_result, int)
-
+    def test_the_setup(self):
+        with mock.patch('builtins.input', return_value='3'):
+            assert fizzbuzz.the_setup('fizz') == int(3)
+        with mock.patch('builtins.input', side_effect=[3, 6, 34]):
+            assert fizzbuzz.the_setup('fizz') == int(3)
+            assert fizzbuzz.the_setup('buzz') == int(6)
+            assert fizzbuzz.the_setup('the upper limit') == int(34)
 
 if __name__ == "__main__":
     unittest.main()

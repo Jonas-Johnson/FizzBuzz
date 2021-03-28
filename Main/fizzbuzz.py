@@ -1,4 +1,4 @@
-#fizz buzz the game
+# fizz buzz the game
 def the_setup(name):
     user_input = None
     while user_input is None:
@@ -7,6 +7,7 @@ def the_setup(name):
         except ValueError:
             print("That was not a number, please try again.")
     return user_input
+
 
 def the_game(fizz_input, buzz_input, num_range):
     results = ""
@@ -20,4 +21,3 @@ def the_game(fizz_input, buzz_input, num_range):
         else:
             results += str(n) + "\n"
     return results
-
